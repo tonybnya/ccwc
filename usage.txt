@@ -1,0 +1,26 @@
+NAME
+    ccwc - word, line, character, and byte count.
+
+DESCRIPTION
+    The ccwc utility displays the number of words, lines, characters,
+    and bytes contained in each input file. A line is defined as
+    a string of characters delimited by a (newline) character.
+
+    A word is defined as a string of characters delimited by whitespace
+    characters. If more than one input file is specified, a line of
+    cumulative counts for all the files is displayed on a separate
+    line after the output for the last file.
+
+USAGE:
+    The following options are available:
+
+    ./ccwc test.txt       default action
+    ./ccwc -c test.txt    number of bytes
+    ./ccwc -l test.txt    number of lines
+    ./ccwc -m test.txt    number of characters
+    ./ccwc -w test.txt    number of words
+
+    When an option is specified, ccwc only reports the information
+    requested by that option. The order of output always takes The
+    form of line, word, byte, and filename. The default action is
+    equivalent to specifying the -c, -l, and -w options.
