@@ -3,8 +3,7 @@ ccwc - word, line, character, and byte count.
 
 Author: @tonybnya
 """
-from typing import Tuple
-import sys
+import argparse
 
 
 def ccwc_bytes(filename: str) -> int:
@@ -62,38 +61,30 @@ def ccwc_words(filename: str) -> int:
     return len(words.split())
 
 
-def ccwc(filename: str) -> Tuple[int, int, int, int]:
-    """
-    Main function
-
-    :param:
-    :return: a tuple of the number of lines, bytes, characters, and words
-    """
-    bytes = ccwc_bytes(filename)
-    characters = ccwc_chars(filename)
-    lines = ccwc_lines(filename)
-    words = ccwc_words(filename)
-
-    return bytes, characters, lines, words
-
-
 if __name__ == "__main__":
-    args = sys.argv
+    parser = argparse.ArgumentParser()
 
-    if len(args) == 1:
-        with open('usage.txt') as usage:
-            print(usage.read())
+    parser.add_argument('-c', type=str, nargs='*', help='Count the number of bytes')
+    parser.add_argument('-l', type=str, nargs='*', help='Count the number of lines')
+    parser.add_argument('-m', type=str, nargs='*', help='Count the number of characters')
+    parser.add_argument('-w', type=str, nargs='*', help='Count the number of words')
 
-        sys.exit(0)
+    args = parser.parse_args()
 
-    filename = args[1]
-    bytes = ccwc_bytes(filename)
-    chars = ccwc_chars(filename)
-    lines = ccwc_lines(filename)
-    words = ccwc_words(filename)
+    if len(args.c) != 1:
+        data = []
+        for filename in args.c:
+            data.append((ccwc_bytes(filename), filename))
 
-    data = [bytes, chars, lines, words]
-    max_length = max(len(str(item)) for item in data)
+        total = 0
+        for item in data:
+            total += item[0]
 
-    for item in data:
-        print(f"{item:>{max_length + 2}} {filename}")
+        data.append((total, 'total'))
+        max_length = max(len(str(item[0])) for item in data)
+
+        for item in data:
+            print(f"{item[0]:>{max_length + 2}} {item[1]}")
+    else:
+        filename = args.c[0]
+        print(f"{ccwc_bytes(filename):>{len(filename)}} {filename}")
