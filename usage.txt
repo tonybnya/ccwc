@@ -14,11 +14,12 @@ DESCRIPTION
 USAGE:
     The following options are available:
 
-    ./ccwc test.txt       default action
-    ./ccwc -c test.txt    number of bytes
-    ./ccwc -l test.txt    number of lines
-    ./ccwc -m test.txt    number of characters
-    ./ccwc -w test.txt    number of words
+    ./ccwc.py test.txt              default action
+    ./ccwc.py -c test.txt           number of bytes
+    ./ccwc.py -l test.txt           number of lines
+    ./ccwc.py -m test.txt           number of characters
+    ./ccwc.py -w test.txt           number of words
+    cat test.txt | ./ccwc.py -l     read from standard input
 
     When an option is specified, ccwc only reports the information
     requested by that option. The order of output always takes The
