@@ -14,14 +14,14 @@ man wc
 
 The TL/DR version is: **wc** - word, line, character, and byte count.
 
-There are 2 text files, `test.txt`, and `usage.txt` used to test with the original `wc` and my version, `ccwc`.
+There are 2 text files, `test.txt`, and `usage.txt`, used to check the behavior of the original `wc` and my version, `ccwc`.
 
 ---
 
 Write a simple version of `wc`, let’s call it `ccwc` (cc for Coding Challenges).
 ---
 
-1. Command line option `-c` and outputs the number of bytes in a file.
+1. flag `-c` = number of bytes in a file
 
 The output should match this:
 ```sh
@@ -45,7 +45,7 @@ python3 ccwc.py -c test.txt usage.txt
 ```
 
 
-2. Command line option `-l` that outputs the number of lines in a file.
+2. flag `-l` = number of lines in a file
 
 The output should match this:
 
@@ -70,7 +70,7 @@ python3 ccwc.py -l test.txt usage.txt
 ```
 
 
-3. Command line option `-m` that outputs the number of characters in a file.
+3. flag `-m` = number of characters in a file
 
 The output should match this:
 
@@ -95,7 +95,7 @@ python3 ccwc.py -m test.txt usage.txt
 ```
 
 
-4. Command line option `-w` that outputs the number of words in a file.
+4. flag `-w` = number of words in a file
 
 The output should match this:
 
@@ -120,7 +120,7 @@ python3 ccwc.py -w test.txt usage.txt
 ```
 
 
-5. This step's goal is to support the default option - i.e. no options are provided, which is the equivalent to the `-c`, `-l`, and `-w` options.
+5. No flag = `-l`, `-w`, and `-c` together
 
 The output should match this:
 
@@ -145,8 +145,7 @@ python3 ccwc.py test.txt usage.txt
 ```
 
 
-6. The Final Step
-In this step the goal is to support being able to read from standard input if no filename is specified.
+6. No argument = read from standard input
 
 ```sh
 cat test.txt | wc -l
