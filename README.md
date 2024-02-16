@@ -1,5 +1,7 @@
 # Build My Own wc Tool
 
+**NB:** First of all, this script uses Python 3.8.2
+
 This challenge is to build my own version of the Unix command line tool `wc`.
 
 ## The Challenge - Build wc
